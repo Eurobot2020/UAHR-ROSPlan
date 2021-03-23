@@ -31,8 +31,8 @@ catkin_package(
 )
 
 # COMMON FLAGS
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fprofile-arcs -ftest-coverage")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -fomit-frame-pointer -DNDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fprofile-arcs -ftest-coverage -Wno-error=deprecated-copy")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -fomit-frame-pointer -DNDEBUG -Wno-error=deprecated-copy")
 
 ########################################################################################################################
 ########################################################################################################################
@@ -50,7 +50,7 @@ if (LBITS EQUAL 64)
 else()
     SET (RDDL_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
 endif(LBITS EQUAL 64)
-SET (RDDL_CMAKE_CXX_FLAGS "${RDDL_CMAKE_CXX_FLAGS} -g -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror -std=c++11 -O3 -DNDEBUG -fomit-frame-pointer")
+SET (RDDL_CMAKE_CXX_FLAGS "${RDDL_CMAKE_CXX_FLAGS} -g -Wall -W -Wno-sign-compare -Wno-deprecated -Wno-error=deprecated-copy -ansi -pedantic -Werror -std=c++11 -O3 -DNDEBUG -fomit-frame-pointer")
 
 # Lexer and parser
 find_package(BISON 3.0.4 REQUIRED)
